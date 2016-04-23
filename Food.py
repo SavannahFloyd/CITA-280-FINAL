@@ -1,19 +1,26 @@
 import pygame
-class SprayBottle:
+class Food:
 
     pygame.init()
     
     def __init__(self):
 
-        self.image = pygame.image.load('SB70.png')
-        self.x = 0
-        self.y = 0
-        self.size = 70
-        
-    def move(self, mouseX, mouseY):
-        
-        self.x = mouseX - self.size/2
-        self.y = mouseY - self.size/2
+        self.image = pygame.image.load('breadPiskel77.png')
+        self.x = 5
+        self.y = 9
+        self.speed = 8
+        self.size = 77
+
+    def move(self, direction):
+
+        if direction == "RIGHT":
+            self.x = self.x + self.speed
+        elif direction == "LEFT":
+            self.x = self.x - self.speed
+        elif direction == "UP":
+            self.y = self.y - self.speed
+        elif direction == "DOWN":
+            self.y = self.y + self.speed
 
         # right fridge boundary
         if self.x + self.size > 504:
@@ -30,11 +37,18 @@ class SprayBottle:
 
     def getImage(self):
         return self.image
+    
     def getX(self):
         return self.x
+
     def getY(self):
         return self.y
+
+    def getSpeed(self):
+        return self.speed
+
+    def setSpeed(self, newSpeed):
+        self.speed = newSpeed
+
     def getSize(self):
         return self.size
-        
-        
